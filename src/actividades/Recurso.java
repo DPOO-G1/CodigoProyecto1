@@ -27,6 +27,12 @@ public class Recurso extends Actividad {
 		this.tipoRecurso = tipoRecurso;
 	}
 
+	@Override
+	public void completar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 

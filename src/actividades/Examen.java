@@ -18,4 +18,10 @@ public class Examen extends Actividad {
 		
 	}
 
+	@Override
+	public void completar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

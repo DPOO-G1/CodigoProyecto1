@@ -24,6 +24,17 @@ public class Quiz extends Actividad {
 	public void addPregunta(PreguntaCerrada pregunta) {
 		this.preguntas.add(pregunta);
 	}
+
+	@Override
+	public void completar() {
+		double notaObtenida = evaluarQuiz();
+        if (notaObtenida >= notaAprobatoria) {
+            setCompletado(true);  // Utiliza el setter
+            System.out.println("Quiz aprobado con nota: " + notaObtenida);
+        } else {
+            System.out.println("Quiz reprobado con nota: " + notaObtenida);
+        }
+	}
 	
 
 }

@@ -81,8 +81,20 @@ public class LearningPath {
 		this.nivelDificultad = nivelDificultad;
 	}
 
+	
+	
+	public int calcularProgreso() {
+        int completadas = 0;
+        for (Actividad actividad : actividades) {
+            if (actividad.isCompletado()) {
+                completadas++;
+            }
+        }
+        return (completadas * 100) / actividades.size();
+    }
 
-
+	
+	
 	public int getDuracion() {
 		return duracion;
 	}
@@ -140,7 +152,7 @@ public class LearningPath {
 	public void setFechaUltModificacion(Date fechaUltModificacion) {
 		this.fechaUltModificacion = fechaUltModificacion;
 	}
-	
+
 	public void addActividad(Actividad actividad) {
 		actividades.add(actividad);
 		actualizarFechaUltModificacion();

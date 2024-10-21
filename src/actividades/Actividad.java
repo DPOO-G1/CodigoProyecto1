@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import usuarios.Estudiante;
+
 public abstract class Actividad {
 	String tipo;
 	String descripcion;
@@ -32,19 +34,19 @@ public abstract class Actividad {
 	
 	double ratingProm;
 	
-	public Actividad(String tipo,String descripcion, String objetivo, String nivelDificultad, double duracion,
-			 Date fechaLim, boolean obligatoria) {
+	public Actividad(String tipo,String descripcion, String objetivo, int duracion2, List<Actividad> actividadesPrerrequisito2,
+			 String fechaLim2, List<Actividad> actividadesOpcionales2) {
 		this.tipo = tipo;
 		this.descripcion = descripcion;
 		this.objetivo = objetivo;
-		this.nivelDificultad = nivelDificultad;
-		this.duracion = duracion;
+		this.nivelDificultad = duracion2;
+		this.duracion = actividadesPrerrequisito2;
 		this.ActividadesPrerrequisito = new ArrayList<>();
-		this.fechaLim = fechaLim;
+		this.fechaLim = fechaLim2;
 		this.actividadesOpcionales = new ArrayList<>();
 		this.estado = "No enviada";
 		this.completado = false;
-		this.obligatoria = obligatoria;
+		this.obligatoria = actividadesOpcionales2;
 		this.reseñas = new ArrayList<>();
 		this.ratings = new ArrayList<>();
 		this.ratingProm = 0;
@@ -117,10 +119,10 @@ public abstract class Actividad {
 	public boolean isCompletado() {
 		return completado;
 	}
-
+	
 	public void setCompletado(boolean completado) {
 		this.completado = completado;
-	}
+	}	
 
 	public List<Reseña> getReseñas() {
 		return reseñas;
@@ -170,6 +172,19 @@ public abstract class Actividad {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	
+	public boolean verificarPrerequisitos(Estudiante estudiante) {
+        for (Actividad prerequisito : ActividadesPrerrequisito) {
+            if (!prerequisito.isCompletado()) {
+                System.out.println("Advertencia: No has completado el prerequisito: " + prerequisito.getDescripcion());
+                return false;  // El prerequisito no está completado
+            }
+        }
+        return true;  // Todos los prerequisitos están completados
+    }
+
+    public abstract void completar();
+	
 	
 	
 	

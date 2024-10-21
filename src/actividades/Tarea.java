@@ -10,5 +10,9 @@ public class Tarea extends Actividad {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	@Override
+    public void completar() {
+        this.completado = true;
+        System.out.println("Tarea completada: " + descripcion);
+    }
 }
