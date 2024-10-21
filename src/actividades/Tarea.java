@@ -15,4 +15,10 @@ public class Tarea extends Actividad {
         this.completado = true;
         System.out.println("Tarea completada: " + descripcion);
     }
+
+	@Override
+	public void menu() {
+		// TODO Auto-generated method stub
+		
+	}
 }
